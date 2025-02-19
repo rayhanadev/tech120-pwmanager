@@ -1,6 +1,7 @@
 import argparse
 import sys
 from getpass import getpass
+import pyperclip
 
 import lib.db as db
 import lib.generator as generator
@@ -15,9 +16,11 @@ def add_entry(db_data: dict, service: str, username: str, password: str) -> dict
 def get_entry(db_data: dict, service: str):
     entry = db_data.get(service)
     if entry:
+        pyperclip.copy(entry["password"])
+
         print(f"\nService: {service}")
         print(f"Username: {entry.get('username')}")
-        print(f"Password: {entry.get('password')}\n")
+        print("Password has been copied to your clipboard.\n")
     else:
         print(f"No entry found for service: {service}")
 
@@ -65,17 +68,23 @@ def main():
     if args.command == "add":
         service = args.service
         username = args.username
+
         if args.password:
             password = args.password
         else:
             password = generator.generate_password(args.length)
-            print(f"Generated password: {password}")
+            print(f"Generated password (copied to clipboard): {password}")
+
+        pyperclip.copy(password)
         data = add_entry(data, service, username, password)
         db.save_db(data, master_password)
+
     elif args.command == "get":
         get_entry(data, args.service)
+
     elif args.command == "list":
         list_services(data)
+
     else:
         parser.print_help()
 
