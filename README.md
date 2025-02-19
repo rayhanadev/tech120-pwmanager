@@ -7,6 +7,8 @@ password manager is created using Python and an encrypted SQLite database.
 
 This project is part of the TECH 12000 course at Purdue University.
 
+![](https://media.discordapp.net/attachments/904896819165814794/1341674513573613569/k0S7DLG.png?ex=67b6db43&is=67b589c3&hm=1be8db8b8ef4094b1df36374c71cf7b7a6cb41c33bd63df66e6e6817cdbab43d&=&width=1657&height=1432)
+
 ## Features
 
 - Create a new account
