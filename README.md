@@ -52,3 +52,9 @@ positional arguments:
 options:
   -h, --help      show this help message and exit
 ```
+
+To launch the GUI, run the following command:
+
+```sh
+$ uv run gui.py
+```
